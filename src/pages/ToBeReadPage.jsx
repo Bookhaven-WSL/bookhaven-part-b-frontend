@@ -1,5 +1,7 @@
-export function ToBeReadPage() {
+export function ToBeReadPage(props) {
     return (
-        <h1>Read Page</h1>
+        <>
+            <h1>To Be Read Page</h1>
+        </>
     )
 }
