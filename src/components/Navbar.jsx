@@ -1,33 +1,29 @@
 import { NavLink } from "react-router-dom";
 
-export function Navbar(props){
+export default function Navbar(props){
+
+    let activeNavStyle = {
+        textDecorationColor: "green",
+        textDecorationLine: "line-through"
+    }
+
     return(
         <nav>
-            <ul>
-                <li>
-                    <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : undefined}>
-                        Read
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/tbr" style={({isActive}) => isActive ? activeNavStyle : undefined}>
-                        To Be Read
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/search" style={({isActive}) => isActive ? activeNavStyle : undefined}>
-                        Search
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/recommendations" style={({isActive}) => isActive ? activeNavStyle : undefined}>
-                        Recommendations
-                    </NavLink>
-                </li>
-                <form>
-                    <input />
-                </form>
-            </ul>
+            <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : undefined}>
+                Read
+            </NavLink>
+            <br></br>
+            <NavLink to="/tbr" end style={({isActive}) => isActive ? activeNavStyle : undefined}>
+                To Be Read
+            </NavLink>
+            <br></br>
+            <NavLink to="/search" style={({isActive}) => isActive ? activeNavStyle : undefined}>
+                Search
+            </NavLink>
+            <br></br>
+            <NavLink to="/recommendations" style={({isActive}) => isActive ? activeNavStyle : undefined}>
+                Recommendations
+            </NavLink>
         </nav>
     )
 }
