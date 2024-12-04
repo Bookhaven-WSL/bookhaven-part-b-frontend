@@ -1,5 +1,7 @@
-export function Search() {
+export default function Search(props) {
     return (
-        <h1>Search Page</h1>
+        <>
+            <h1>Search Page</h1>
+        </>
     )
 }

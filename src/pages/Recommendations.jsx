@@ -1,5 +1,7 @@
-export function Recommendations() {
+export default function Recommendations(props) {
     return (
-        <h1>Recomendations Page</h1>
+        <>
+            <h1>Recomendations Page</h1>
+        </>
     )
 }
