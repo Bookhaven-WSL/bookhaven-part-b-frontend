@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
+import './Navbar.css';
 
 export default function Navbar(props){
 
     let activeNavStyle = {
         textDecorationColor: "green",
-        textDecorationLine: "line-through"
+        textDecorationLine: "underline"
     }
 
     return(
