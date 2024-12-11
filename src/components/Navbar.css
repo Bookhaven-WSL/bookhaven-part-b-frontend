@@ -3,6 +3,7 @@ nav {
     justify-content: space-around;
     align-items: flex-end;
     font-size: medium;
+    font-weight: bold;
     background-color: #ff9505;
     color: #fc5305;
 }

@@ -5,7 +5,7 @@ import ToBeReadPage from './pages/ToBeReadPage'
 import Search from './pages/Search'
 import Recommendations from './pages/Recommendations'
 import Navbar from './components/Navbar'
-
+import Header from './components/Header'
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Header />
         <Navbar />
         <Routes>
           <Route path="/" element={<ReadPage />} />
