@@ -1,0 +1,17 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.cards {
+    flex: 0 1 calc(20% - 20px);
+    box-sizing: border-box;
+    background-color: gray;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px #0f0f0f;
+}
