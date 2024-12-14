@@ -1,6 +1,7 @@
 import "./Cards.css";
 
 const Cards = () => {
+    console.log("Cards component is rendering!");
     return (
         <div className="cards-container">
             {Array.from({ length: 10 }, (_, i) => (

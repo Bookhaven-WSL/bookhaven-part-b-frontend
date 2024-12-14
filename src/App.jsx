@@ -6,7 +6,6 @@ import Search from './pages/Search'
 import Recommendations from './pages/Recommendations'
 import Navbar from './components/Navbar'
 import Header from './components/Header'
-import Cards from './components/Cards'
 
 
 function App() {
