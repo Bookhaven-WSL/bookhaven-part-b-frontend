@@ -1,7 +1,12 @@
-export default function ToBeReadPage(props) {
+import Cards from '../components/Cards';
+
+const ToBeReadPage = () => {
     return (
-        <>
-            <h1>To Be Read Page</h1>
-        </>
-    )
-}
+        <div>
+            <h1>To Be Read</h1>
+            <Cards />
+        </div>
+    );
+};
+
+export default ToBeReadPage;
