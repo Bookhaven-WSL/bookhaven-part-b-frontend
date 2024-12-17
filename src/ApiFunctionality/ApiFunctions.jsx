@@ -130,7 +130,11 @@ export async function findBookPersonal(bookDetails) {
 
 export async function getBookRead() {
 
-    const response = await axios.get(`${URL}/book/read`)
+    const response = await axios.get(`${URL}/book/read`, { 
+        headers: {
+            Authorization: "JWT " + localStorage.getItem('token')
+        }
+    })
 
     if (response.status === 200) {
         return response.data

@@ -30,7 +30,7 @@ export default function LoginSignupPage(props) {
         console.log(response.json)
 
         if (response && response.jwt) {
-            setJwt(response.jwt)
+            localStorage.setItem('token', jwt)
             setUsername(response.user.username)
             setEmail(response.user.email)
             setPassword(response.user.password)
