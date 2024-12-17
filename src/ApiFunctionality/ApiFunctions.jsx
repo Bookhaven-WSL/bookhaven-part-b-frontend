@@ -128,9 +128,9 @@ export async function findBookPersonal(bookDetails) {
     }
 }
 
-export async function getBookRead(bookDetails) {
+export async function getBookRead() {
 
-    const response = await axios.get(`${URL}/book/read`, bookDetails)
+    const response = await axios.get(`${URL}/book/read`)
 
     if (response.status === 200) {
         return response.data

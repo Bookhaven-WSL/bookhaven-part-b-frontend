@@ -13,7 +13,17 @@ function App() {
 
   return (
     <>
-      <LoginSignupPage />
+      
+      <BrowserRouter>
+        <Header />
+        <Navbar />
+        <Routes>
+          {/* <Route path="/" element={LoginSignupPage />}/> */}
+          <Route path="/read" element={<ReadPage />}/>
+        </Routes>
+          
+      </BrowserRouter>
+      
     </>
   )
 }
