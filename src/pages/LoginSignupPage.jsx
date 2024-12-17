@@ -9,20 +9,27 @@ export default function LoginSignupPage(props) {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    const callSignup = async () => {
-        let username = documents.getElementById("usernameSignup")
-        let email = documents.getElementById("emailSignup")
-        let password = documents.getElementById("passwordSignup")
+    const callSignup = async (event) => {
+
+        event.preventDefault();
+
+        let username = document.getElementById("usernameSignup").value
+        let email = document.getElementById("emailSignup").value
+        let password = document.getElementById("passwordSignup").value
+
 
         let userDetails = {
             "username": username,
             "email": email,
             "password": password
         }
+        console.log(userDetails)
 
         const response = await userSignup(userDetails)
 
-        if (response) {
+        console.log(response.json)
+
+        if (response && response.jwt) {
             setJwt(response.jwt)
             setUsername(response.username)
             setEmail(response.email)
@@ -40,26 +47,25 @@ export default function LoginSignupPage(props) {
             </>
         )
     }
-    else if (jwt !== "") {
+    if (jwt !== "") {
         return (
             <>
-                <h3>${jwt}</h3>
-                <h3>${username}</h3>
-                <h3>${email}</h3>
-                <h3>${password}</h3>
+                <h3>JWT: ${jwt}</h3>
+                <h3>username: ${username}</h3>
+                <h3>email: ${email}</h3>
+                <h3>password: ${password}</h3>
             </>
         )
-    }
-    else {
+    } else {
         return (
             <>
                 <h1>SIGNUP</h1>
                 <form>
-                    <label for="usernameSignup">Username:</label>
+                    <label htmlFor="usernameSignup">Username:</label>
                     <input type="text" id="usernameSignup" name="usernameSignup"></input>
-                    <label for="emailSignup">Email:</label>
+                    <label htmlFor="emailSignup">Email:</label>
                     <input type="text" id="emailSignup" name="emailSignup"></input>
-                    <label for="passwordSignup">Password:</label>
+                    <label htmlFor="passwordSignup">Password:</label>
                     <input type="text" id="passwordSignup" name="passwordSignup"></input>
                     <button onClick={callSignup}>
                         Signup
@@ -68,9 +74,9 @@ export default function LoginSignupPage(props) {
     
                 <h1>LOGIN</h1>
                 <form>
-                    <label for="emailLogin">Email:</label>
+                    <label htmlFor="emailLogin">Email:</label>
                     <input type="text" id="emailLogin" name="emailLogin"></input>
-                    <label for="passwordLogin">Password:</label>
+                    <label htmlFor="passwordLogin">Password:</label>
                     <input type="text" id="passwordLogin" name="passwordLogin"></input>
                 </form>
             </>
