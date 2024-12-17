@@ -31,9 +31,9 @@ export default function LoginSignupPage(props) {
 
         if (response && response.jwt) {
             setJwt(response.jwt)
-            setUsername(response.username)
-            setEmail(response.email)
-            setPassword(response.password)
+            setUsername(response.user.username)
+            setEmail(response.user.email)
+            setPassword(response.user.password)
         }
         else {
             setError(true)
@@ -50,10 +50,10 @@ export default function LoginSignupPage(props) {
     if (jwt !== "") {
         return (
             <>
-                <h3>JWT: ${jwt}</h3>
-                <h3>username: ${username}</h3>
-                <h3>email: ${email}</h3>
-                <h3>password: ${password}</h3>
+                <h3>JWT: {jwt}</h3>
+                <h3>username: {username}</h3>
+                <h3>email: {email}</h3>
+                <h3>password: {password}</h3>
             </>
         )
     } else {
