@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     font-family: "Baumans";
     font-size: medium;
@@ -16,7 +16,7 @@ nav {
 
 .navbar-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -27,6 +27,9 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 1;
 }
 
 .navbar-links a {
@@ -45,19 +48,24 @@ nav {
     border: none;
     cursor: pointer;
     padding: 10px;
+    z-index: 2000;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    background-color: #330F0A;
 }
 
 .menu-bar {
     width: 25px;
     height: 3px;
-    background-color: #fc5305;
+    background-color: white;
     border-radius: 2px;
     margin: 4px 0;
     transition: background-color 0.3s ease-in-out;
 }
 
 .menu-toggle:hover .menu-bar {
-    background-color: white;
+    background-color: #fc5305;
 }
 
 @media (max-width: 768px) {
@@ -80,6 +88,8 @@ nav {
 
     .menu-toggle {
         display: block;
+        position: absolute;
+        z-index: 2000;
     }
 
     .navbar {
