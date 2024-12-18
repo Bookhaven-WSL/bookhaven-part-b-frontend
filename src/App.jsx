@@ -8,11 +8,19 @@ import Routes from './routes/index.jsx'
 function App() {
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </AuthProvider>
+    <>
+      
+    <BrowserRouter>
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LoginSignupPage />}/>
+        <Route path="/read" element={<ReadPage />}/>
+      </Routes>
+        
+    </BrowserRouter>
+    
+  </>
   )
 }
 
