@@ -12,7 +12,7 @@ const Routes = () => {
 
   const routesForPublic = [
     {
-      path: "/",
+      path: "/login",
       element: <LoginSignupPage />
     },
   ];
@@ -43,12 +43,8 @@ const Routes = () => {
     },
   ];
 
-  
   const routesForNotAuthenticatedOnly = [
-    {
-      path: "/login",
-      element: <div>Login</div>,
-    },
+
   ];
 
  

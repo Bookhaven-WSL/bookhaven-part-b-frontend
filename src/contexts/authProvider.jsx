@@ -7,6 +7,7 @@ import {
     useMemo,
     useState,
 } from "react";
+import { BrowserRouter } from "react-router-dom";
 
 const AuthContext = createContext()
 
@@ -18,7 +19,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         if (token) {
-            axios.defaults.headers.common["Authorization"] = "JWT " + token;
+            axios.defaults.headers.common["Authorization"] = "Bearer " + token;
             localStorage.setItem("token", token);
         } else {
             delete axios.defaults.headers.common["Authorization"];
@@ -33,6 +34,8 @@ const AuthProvider = ({children}) => {
         }),
         [token]
     );
+
+    console.log("Rendering authProvider")
 
     return (
         <AuthContext.Provider value={contextValue}>
