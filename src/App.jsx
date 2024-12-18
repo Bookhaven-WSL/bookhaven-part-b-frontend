@@ -1,5 +1,7 @@
 import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css'
+import Header from "./components/Header.jsx"
+import Navbar from './components/Navbar.jsx';
 import AuthProvider from "./contexts/authProvider";
 import Routes from './routes/index.jsx'
 
@@ -8,18 +10,17 @@ import Routes from './routes/index.jsx'
 function App() {
 
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<LoginSignupPage />}/>
-          <Route path="/read" element={<ReadPage />}/>
-        </Routes>
-          
-      </BrowserRouter>
-      
-    </>
+    <BrowserRouter>
+      <Header />
+      <Navbar />
+    </BrowserRouter>
+    // // <AuthProvider>
+    //   <BrowserRouter>
+    //     <Header />
+    //     <Navbar />
+    //     {/* <Routes /> */}
+    //   </BrowserRouter>
+    // {/* </AuthProvider> */}
 
   )
 }

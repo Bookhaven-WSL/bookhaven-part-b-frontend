@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import LoginSignupPage from "../pages/LoginSignupPage";
 import ReadPage from "../pages/Read";
 import ToBeReadPage from "../pages/ToBeReadPage";
+import Search from "../pages/Search"
 import Recommendations from "../pages/Recommendations";
 
 const Routes = () => {
@@ -11,7 +12,7 @@ const Routes = () => {
 
   const routesForPublic = [
     {
-      path: "/login",
+      path: "/",
       element: <LoginSignupPage />
     },
   ];
@@ -23,7 +24,7 @@ const Routes = () => {
       element: <ProtectedRoute />,
       children: [
         {
-          path: "/",
+          path: "/read",
           element: <ReadPage />,
         },
         {
@@ -44,10 +45,6 @@ const Routes = () => {
 
   
   const routesForNotAuthenticatedOnly = [
-    {
-      path: "/",
-      element: <div>Home Page</div>,
-    },
     {
       path: "/login",
       element: <div>Login</div>,
