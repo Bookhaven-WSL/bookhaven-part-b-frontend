@@ -29,7 +29,6 @@ nav {
     padding: 0;
     justify-content: center;
     width: 100%;
-    flex-grow: 1;
 }
 
 .navbar-links a {
@@ -50,8 +49,6 @@ nav {
     padding: 10px;
     z-index: 2000;
     position: absolute;
-    right: 20px;
-    top: 10px;
     background-color: #330F0A;
 }
 
