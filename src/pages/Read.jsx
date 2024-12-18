@@ -44,9 +44,9 @@ function ReadPage(props) {
     //         }
     //     };
 
-        getBooks();
+        // getBooks();
 
-    }, []);
+    }, );
 
     return (
         <>

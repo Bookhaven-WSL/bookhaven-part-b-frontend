@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { userSignup } from "../ApiFunctionality/ApiFunctions"
 import ReadPage from "./Read"
+import { handleLogin } from "../functions/loginFunction"
 
 export default function LoginSignupPage(props) {
     const [jwt, setJwt] = useState("")
@@ -82,6 +83,9 @@ export default function LoginSignupPage(props) {
                     <input type="text" id="emailLogin" name="emailLogin"></input>
                     <label htmlFor="passwordLogin">Password:</label>
                     <input type="text" id="passwordLogin" name="passwordLogin"></input>
+                    <button onClick={handleLogin}>
+                        Login
+                    </button>
                 </form>
             </>
         )
