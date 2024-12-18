@@ -18,7 +18,7 @@ export async function userSignup(userDetails) {
 
 export async function userLogin(userDetails) {
 
-    const response = await axios.post(`${URL}/user/update`, userDetails)
+    const response = await axios.post(`${URL}/auth/login`, userDetails)
 
     if (response.status === 200) {
         return response.data
@@ -32,7 +32,7 @@ export async function userLogin(userDetails) {
 
 export async function userUpdate(userDetails) {
 
-    const response = await axios.patch(`${URL}/auth/login`, userDetails)
+    const response = await axios.patch(`${URL}/user/update`, userDetails)
 
     if (response.status === 200) {
         return response.data
