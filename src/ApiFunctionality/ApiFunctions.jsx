@@ -93,14 +93,17 @@ export async function addBookToBeRead(bookDetails) {
 }
 
 export async function addBookRecommended(bookDetails) {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(`${URL}/book/recommended`, params={bookDetails}, {
+            headers: {
+                'Authorization': "Bearer " + token,
+            }
+        });
 
-    const response = await axios.post(`${URL}/book/recommended`, bookDetails)
-
-    if (response.status === 200) {
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
@@ -133,7 +136,7 @@ export async function findBookPersonal(bookDetails) {
 
 export async function getBookRead() {
     try {
-        const token = localStorage.getItem('token'); // Or get token from context/authProvider
+        const token = localStorage.getItem('token'); 
         const response = await axios.get('http://localhost:8080/book/read', {
         headers: {
             'Authorization': "Bearer " + token,
