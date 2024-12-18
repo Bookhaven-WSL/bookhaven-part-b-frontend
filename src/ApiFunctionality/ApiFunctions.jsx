@@ -105,16 +105,19 @@ export async function addBookRecommended(bookDetails) {
 }
 
 export async function findBookNew(bookDetails) {
-    
-    const response = await axios.post(`${URL}/book/search-new`, bookDetails)
-
-    if (response.status === 200) {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(`${URL}/book/search-new`, params={bookDetails}, {
+        headers: {
+            'Authorization': "Bearer " + token,
+        },
+        });
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
+   
 
 export async function findBookPersonal(bookDetails) {
     
