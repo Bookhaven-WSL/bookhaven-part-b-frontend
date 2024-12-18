@@ -12,9 +12,19 @@ import LoginSignupPage from './pages/LoginSignupPage'
 function App() {
 
   return (
-    <>
-      <LoginSignupPage />
-    </>
+    <BrowserRouter>
+        <Header />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ReadPage />} />
+          <Route path="/tbr" element={<ToBeReadPage />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/recommendations" element={<Recommendations />} />
+        </Routes>
+      </BrowserRouter>
+    // <>
+    //   <LoginSignupPage />
+    // </>
   )
 }
 
