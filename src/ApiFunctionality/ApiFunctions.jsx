@@ -129,20 +129,31 @@ export async function findBookPersonal(bookDetails) {
 }
 
 export async function getBookRead() {
-
-    const response = await axios.get(`${URL}/book/read`, { 
+    try {
+        const token = localStorage.getItem('token'); // Or get token from context/authProvider
+        const response = await axios.get('http://localhost:8080/book/read', {
         headers: {
-            Authorization: "JWT " + localStorage.getItem('token')
-        }
-    })
+            'Authorization': "Bearer " + token,
+        },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+//     const response = await axios.get(`${URL}/book/read`, { 
+//         headers: {
+//             Authorization: "JWT " + localStorage.getItem('token')
+//         }
+//     })
 
-    if (response.status === 200) {
-        return response.data
-    }
-    else {
-        return
-    }
-}
+//     if (response.status === 200) {
+//         return response.data
+//     }
+//     else {
+//         return
+//     }
+// }
 
 export async function getBookToBeRead(bookDetails) {
 
