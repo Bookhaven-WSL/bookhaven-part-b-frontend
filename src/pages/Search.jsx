@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Cards from "../components/Cards";
 
 export default function Search(props) {
     const [title, setTitle] = useState("");
@@ -31,6 +32,12 @@ export default function Search(props) {
         }
     };
 
+    const result = books.books;
+
+
+            
+        
+    
     return (
         <>
             <h1>Search Page</h1>
@@ -40,17 +47,18 @@ export default function Search(props) {
                 id="bookTitle"
                 name="bookTitle"
                 value={title} 
-                onChange={(e) => setTitle(e.target.value)} // Track the book title
+                placeholder="e.g The Wizard of Oz"
+                onChange={(e) => setTitle(e.target.value)}
             />
             <button onClick={findBooks}>Search</button>
 
-            {books.length > 0 && (
-                <ul>
-                    {books.map((book, index) => (
-                        <li key={index}>{book.title}</li>
-                    ))}
-                </ul>
-            )}
+            <div>
+                {result && result.length > 0 ? (
+                        <Cards className="Cards" books={result} />
+                ) : (
+                        <p>No books matching that search</p>
+                )}
+            </div>
         </>
-    );
+     );
 }
