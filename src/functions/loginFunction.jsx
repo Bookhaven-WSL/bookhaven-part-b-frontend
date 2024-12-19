@@ -23,6 +23,15 @@ export async function handleLogin (event) {
     } catch (error) {
         console.error("Error logging in:", error)
     }
-    
+
+    if (error) {
+        return (
+            <h1>Error Logging In</h1>
+        )
+    } else {
+        return (
+            <h1>Welcome back {result.username}</h1>
+        )
+    }
 }
 

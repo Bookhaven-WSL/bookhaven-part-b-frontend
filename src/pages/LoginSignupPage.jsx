@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { userSignup } from "../ApiFunctionality/ApiFunctions"
+import { userLogin, userSignup } from "../ApiFunctionality/ApiFunctions"
 import ReadPage from "./Read"
 import { handleLogin } from "../functions/loginFunction"
 
@@ -43,6 +43,33 @@ export default function LoginSignupPage(props) {
         }
     }
 
+    const handleLogin = async (event) => {
+
+        event.preventDefault();
+        let email = document.getElementById("emailLogin").value
+        let password = document.getElementById("passwordLogin").value
+        
+        let userDetails = {
+            "email": email,
+            "password": password
+        }
+        console.log(userDetails)
+        try {
+            const result = await userLogin(userDetails)
+    
+            if (result && result.jwt) {
+                localStorage.setItem("token", result.jwt);
+                setJwt(result.jwt)
+                setUsername(result.user.username)
+                console.log(result)
+            } else {
+                console.log("Failed Login, jwt token not found")
+            }
+        } catch (error) {
+            console.error("Error logging in:", error)
+        }
+    
+    }
     if (error) {
         return (
             <>
@@ -53,13 +80,19 @@ export default function LoginSignupPage(props) {
     
 
     else if (jwt) {
-        return (
-            <>
-                <h2>Welcome {username}</h2>
-                <h3>JWT: {jwt}</h3>
-                <h3>email: {email}</h3>
-            </>
-        )
+        if (username) {
+            return (
+                <>
+                    <h1>Welcome {username}!</h1>
+                    {/* <h3>JWT: {jwt}</h3>
+                    <h3>email: {email}</h3> */}
+                </>
+            )
+        } else {
+            return (
+                <h1>Welcome Back You!</h1>
+            )
+        }
         
     } else {
         return (
