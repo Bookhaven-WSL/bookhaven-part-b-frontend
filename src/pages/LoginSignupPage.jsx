@@ -28,6 +28,9 @@ export default function LoginSignupPage(props) {
 
         const result = await userSignup(userDetails)
 
+        if (result && result.message) {
+            setError(result.message)
+        }
 
         if (result && result.jwt) {
             setJwt(result.jwt)
@@ -37,9 +40,6 @@ export default function LoginSignupPage(props) {
             localStorage.setItem("token", result.jwt)
             // setToken(result.jwt);
             console.log(result)
-        }
-        else {
-            setError(true)
         }
     }
 
@@ -69,15 +69,17 @@ export default function LoginSignupPage(props) {
             console.error("Error logging in:", error)
         }
     
+
     }
     if (error) {
         return (
             <>
-                <h1>ERROR</h1>
+                <h1>{error}</h1>
+                <br></br>
+                <h2>Please refresh the page to login</h2>
             </>
         )
     }
-    
 
     else if (jwt) {
         if (username) {
