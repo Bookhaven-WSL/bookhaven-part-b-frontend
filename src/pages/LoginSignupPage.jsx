@@ -2,6 +2,7 @@ import { useState } from "react"
 import { userSignup } from "../ApiFunctionality/ApiFunctions"
 import ReadPage from "./Read"
 import { handleLogin } from "../functions/loginFunction"
+import "../styles/LoginSignupPage.css"
 
 export default function LoginSignupPage(props) {
     const [jwt, setJwt] = useState("")
