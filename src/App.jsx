@@ -28,9 +28,7 @@ function App() {
           </Routes>
         </AuthProvider>
     </BrowserRouter>
-   
   )
 }
 
 export default App;
- 
