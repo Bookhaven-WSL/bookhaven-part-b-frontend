@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { userSignup } from "../ApiFunctionality/ApiFunctions"
+import ReadPage from "./Read"
+import { handleLogin } from "../functions/loginFunction"
 
 export default function LoginSignupPage(props) {
-
     const [jwt, setJwt] = useState("")
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
@@ -25,15 +26,17 @@ export default function LoginSignupPage(props) {
         }
         console.log(userDetails)
 
-        const response = await userSignup(userDetails)
+        const result = await userSignup(userDetails)
 
-        console.log(response.json)
 
-        if (response && response.jwt) {
-            setJwt(response.jwt)
-            setUsername(response.user.username)
-            setEmail(response.user.email)
-            setPassword(response.user.password)
+        if (result && result.jwt) {
+            setJwt(result.jwt)
+            setUsername(result.user.username)
+            setEmail(result.user.email)
+            setPassword(result.user.password)
+            localStorage.setItem("token", result.jwt)
+            // setToken(result.jwt);
+            console.log(result)
         }
         else {
             setError(true)
@@ -47,15 +50,17 @@ export default function LoginSignupPage(props) {
             </>
         )
     }
-    if (jwt !== "") {
+    
+
+    else if (jwt) {
         return (
             <>
+                <h2>Welcome {username}</h2>
                 <h3>JWT: {jwt}</h3>
-                <h3>username: {username}</h3>
                 <h3>email: {email}</h3>
-                <h3>password: {password}</h3>
             </>
         )
+        
     } else {
         return (
             <>
@@ -78,6 +83,9 @@ export default function LoginSignupPage(props) {
                     <input type="text" id="emailLogin" name="emailLogin"></input>
                     <label htmlFor="passwordLogin">Password:</label>
                     <input type="text" id="passwordLogin" name="passwordLogin"></input>
+                    <button onClick={handleLogin}>
+                        Login
+                    </button>
                 </form>
             </>
         )

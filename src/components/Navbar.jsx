@@ -10,7 +10,7 @@ export default function Navbar(props){
 
     return(
         <nav>
-            <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : undefined}>
+            <NavLink to="/read" style={({isActive}) => isActive ? activeNavStyle : undefined}>
                 Read
             </NavLink>
             <br></br>
