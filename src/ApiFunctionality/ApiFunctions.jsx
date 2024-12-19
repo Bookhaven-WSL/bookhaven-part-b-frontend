@@ -18,7 +18,7 @@ export async function userSignup(userDetails) {
 
 export async function userLogin(userDetails) {
 
-    const response = await axios.post(`${URL}/user/update`, userDetails)
+    const response = await axios.post(`${URL}/auth/login`, userDetails)
 
     if (response.status === 200) {
         return response.data
@@ -32,7 +32,7 @@ export async function userLogin(userDetails) {
 
 export async function userUpdate(userDetails) {
 
-    const response = await axios.patch(`${URL}/auth/login`, userDetails)
+    const response = await axios.patch(`${URL}/user/update`, userDetails)
 
     if (response.status === 200) {
         return response.data
@@ -68,53 +68,80 @@ export async function addBook(bookDetails) {
     }
 }
 
-export async function addBookRead(bookDetails) {
-
-    const response = await axios.post(`${URL}/book/read`, bookDetails)
-
-    if (response.status === 200) {
+export async function addBookRead(olid) {
+    try {
+        console.log("Adding book to Read shelf")
+        const token = localStorage.getItem('token')
+        if (!token) {
+            console.error('JWT token not found, please log in.');
+            return;
+        }
+        console.log(olid)
+        const response = await axios.post(`${URL}/book/read`, {olid: olid}, {
+            headers: {
+                'jwt': token,
+            }
+        });
+        
+        console.log("Book Added")
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
-export async function addBookToBeRead(bookDetails) {
 
-    const response = await axios.post(`${URL}/book/to-be-read`, bookDetails)
-
-    if (response.status === 200) {
+export async function addBookToBeRead(olid) {
+    try {
+        console.log("Adding book to ToBeRead shelf")
+        const token = localStorage.getItem('token')
+        if (!token) {
+            console.error('JWT token not found, please log in.');
+            return;
+        }
+        console.log(olid)
+        const response = await axios.post(`${URL}/book/to-be-read`, {olid: olid}, {
+            headers: {
+                'jwt': token,
+            }
+        });
+        
+        console.log("Book Added")
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
 export async function addBookRecommended(bookDetails) {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(`${URL}/book/recommended`, params={bookDetails}, {
+            headers: {
+                'jwt': token,
+            }
+        });
 
-    const response = await axios.post(`${URL}/book/recommended`, bookDetails)
-
-    if (response.status === 200) {
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
 export async function findBookNew(bookDetails) {
-    
-    const response = await axios.post(`${URL}/book/search-new`, bookDetails)
-
-    if (response.status === 200) {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(`${URL}/book/search-new`, params={bookDetails}, {
+        headers: {
+            'jwt': token,
+        },
+        });
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
+   
 
 export async function findBookPersonal(bookDetails) {
     
@@ -128,41 +155,63 @@ export async function findBookPersonal(bookDetails) {
     }
 }
 
-export async function getBookRead(bookDetails) {
 
-    const response = await axios.get(`${URL}/book/read`, bookDetails)
-
-    if (response.status === 200) {
+export async function findBookRecommended() {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await axios.post(`${URL}/book/recommended-new`, {genre: genre}, {
+        headers: {
+            'jwt': token,
+        },
+        });
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
-export async function getBookToBeRead(bookDetails) {
-
-    const response = await axios.get(`${URL}/book/to-be-read`, bookDetails)
-
-    if (response.status === 200) {
-        return response.data
+export async function getBookRead() {
+    try {
+        const token = localStorage.getItem('token'); 
+        const response = await axios.get('http://localhost:8080/book/read', {
+        headers: {
+            'jwt': token,
+        },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
     }
-    else {
-        return
-    }
-}
+};
 
-export async function getBookRecommended(bookDetails) {
-
-    const response = await axios.get(`${URL}/book/recommended`, bookDetails)
-
-    if (response.status === 200) {
-        return response.data
+export async function getBookToBeRead() {
+    try {
+        const token = localStorage.getItem('token'); 
+        const response = await axios.get('http://localhost:8080/book/to-be-read', {
+        headers: {
+            'jwt': token,
+        },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
     }
-    else {
-        return
+};
+export async function getBookRecommended() {
+
+    try {
+        const token = localStorage.getItem('token'); 
+        const response = await axios.get('http://localhost:8080/book/recommended', {
+        headers: {
+            'jwt': token,
+        },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
     }
-}
+};
+   
 
 export async function updateBook(bookDetails) {
 

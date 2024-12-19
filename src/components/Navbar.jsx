@@ -28,7 +28,6 @@ export default function Navbar() {
                     <span className="menu-bar"></span>
                 </button>
             </div>
-
             <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
                 <li>
                     <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : undefined}>
