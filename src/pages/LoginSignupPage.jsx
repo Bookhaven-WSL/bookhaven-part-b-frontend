@@ -55,8 +55,8 @@ export default function LoginSignupPage(props) {
     else if (jwt) {
         return (
             <>
+                <h2>Welcome {username}</h2>
                 <h3>JWT: {jwt}</h3>
-                <h3>username: {username}</h3>
                 <h3>email: {email}</h3>
             </>
         )

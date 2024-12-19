@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards from "../components/Cards";
+import { findBookRecommended, getBookRecommended } from "../ApiFunctionality/ApiFunctions";
 
 
 export default function Recommendations(props) {
@@ -17,7 +18,7 @@ export default function Recommendations(props) {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/book/recommended', {genre: genre}, {
+            const response = await axios.post('http://localhost:8080/book/search-new', {genre: genre}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`,
                 },
@@ -26,15 +27,16 @@ export default function Recommendations(props) {
             setBooks(response.data);
         } catch (error) {
             console.error('Failed to fetch books:', error.response);
-            // if (error.response && error.response.status === 403) {
-            //     alert('Access forbidden. Please log in again.');
-            //     window.location.href = '/';
-            // }
+            if (error.response && error.response.status === 403) {
+                alert('Access forbidden. Please log in again.');
+                window.location.href = '/';
+            }
         }
     };
 
     const result = books.books;
-
+    console.log (result)
+    
     return (
         <>
             <h1>Recommended</h1>

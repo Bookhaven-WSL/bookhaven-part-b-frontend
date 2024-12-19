@@ -1,3 +1,4 @@
+import { addBookRead } from "../ApiFunctionality/ApiFunctions";
 import "../styles/Cards.css";
 
 const Cards = ({ books, className }) => {
@@ -15,6 +16,18 @@ const Cards = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
+                        <button 
+                            onClick={() => { 
+                                if (bookArray[0]?.olid) {
+                                    addBookRead(bookArray[0].olid);
+                                } else {
+                                    console.error('Invalid OLID');
+                                }
+                            }}
+                        >
+                            Read
+                        </button>
+                        <button>Want to read</button>
                     </div>
                 );
             })}
