@@ -30,7 +30,7 @@ export default function Navbar() {
             </div>
             <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
                 <li>
-                    <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : undefined}>
+                    <NavLink to="/read" style={({isActive}) => isActive ? activeNavStyle : undefined}>
                         Read
                     </NavLink>
                 </li>
