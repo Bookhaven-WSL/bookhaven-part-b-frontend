@@ -91,15 +91,25 @@ export async function addBookRead(olid) {
 }
 
 
-export async function addBookToBeRead(bookDetails) {
-
-    const response = await axios.post(`${URL}/book/to-be-read`, bookDetails)
-
-    if (response.status === 200) {
+export async function addBookToBeRead(olid) {
+    try {
+        console.log("Adding book to ToBeRead shelf")
+        const token = localStorage.getItem('token')
+        if (!token) {
+            console.error('JWT token not found, please log in.');
+            return;
+        }
+        console.log(olid)
+        const response = await axios.post(`${URL}/book/to-be-read`, {olid: olid}, {
+            headers: {
+                'jwt': token,
+            }
+        });
+        
+        console.log("Book Added")
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
