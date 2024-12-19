@@ -7,9 +7,11 @@ export default function ToBeReadPage(props) {
         const [books, setBooks] = useState([]);
         const [error, setError] = useState(null);
         const { token, setToken } = useAuth();
+        const [loading, setLoading] = useState(true)
     
     
         const getBooks = async () => {
+            
             const jwtToken = localStorage.getItem('token');
             
             if (!jwtToken) {
@@ -23,20 +25,28 @@ export default function ToBeReadPage(props) {
                 setBooks(bookData);
             } catch (error) {
                 console.error(error)
+            } finally {
+                setLoading(false);
             }
         };
       
-        console.log(books.books)
+        useEffect(() => {
+            getBooks();
+        },[]);
         
-        const result = books.books
+        const result = books?.books || [];
     
         console.log(result)
     return (
         <>
             <h1>To Be Read Page</h1>
-            <button onClick={getBooks}>Generate</button>
-
-            <CardsRead classname="Cards" books={result} />
+            {loading ? (
+                <p>Loading books...</p>
+            ) : result.length > 0 ? (
+                <CardsRead classname="Cards" books={result} />
+            ) : (
+                <p>No books in this bookshelf</p>
+            )}
         </>
     )
 }

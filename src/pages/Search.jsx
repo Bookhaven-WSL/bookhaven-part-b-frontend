@@ -5,8 +5,11 @@ import Cards from "../components/Cards";
 export default function Search(props) {
     const [title, setTitle] = useState("");
     const [books, setBooks] = useState([]);
+    const [search, setSearch] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const findBooks = async () => {
+
         const jwtToken = localStorage.getItem('token');
 
         
@@ -14,6 +17,8 @@ export default function Search(props) {
             console.error('JWT token not found, please log in.');
             return;
         }
+
+        setLoading(true);
 
         try {
             const response = await axios.post('http://localhost:8080/book/search-new', {title: title}, {
@@ -29,6 +34,9 @@ export default function Search(props) {
                 alert('Access forbidden. Please log in again.');
                 window.location.href = '/';
             }
+        } finally {
+            setSearch(true);
+            setLoading(false);
         }
     };
 
@@ -48,16 +56,18 @@ export default function Search(props) {
                 name="bookTitle"
                 value={title} 
                 placeholder="e.g The Wizard of Oz"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(event) => setTitle(event.target.value)}
             />
             <button onClick={findBooks}>Search</button>
 
             <div>
-                {result && result.length > 0 ? (
-                        <Cards className="Cards" books={result} />
+                {loading && <p>Loading books...</p>}
+
+                {!loading && (result && result.length > 0 ? (
+                    <Cards className="Cards" books={result} />
                 ) : (
-                        <p>No books matching that search</p>
-                )}
+                    search && <p>Sorry, no books matching that search</p>
+                ))}
             </div>
         </>
      );
