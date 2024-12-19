@@ -8,7 +8,7 @@ export default function Recommendations(props) {
     const [genre, setGenre] = useState("");
     const [books, setBooks] = useState([]);
 
-    const findBooks = async () => {
+    const findBooksRecommended = async () => {
         const jwtToken = localStorage.getItem('token');
 
         
@@ -18,7 +18,7 @@ export default function Recommendations(props) {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/book/search-new', {genre: genre}, {
+            const response = await axios.post('http://localhost:8080/book/recommended-new', {genre: genre}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`,
                 },
@@ -40,7 +40,7 @@ export default function Recommendations(props) {
     return (
         <>
             <h1>Recommended</h1>
-            <label htmlFor="bookTitle">Genre: </label>
+            <label htmlFor="bookGenre">Genre: </label>
             <input
                 type="text"
                 id="bookGenre"
@@ -49,7 +49,7 @@ export default function Recommendations(props) {
                 placeholder="e.g Science Fiction"
                 onChange={(e) => setGenre(e.target.value)}
             />
-            <button onClick={findBooks}>Search</button>
+            <button onClick={findBooksRecommended}>Search</button>
 
             <div>
                 {result && result.length > 0 ? (
