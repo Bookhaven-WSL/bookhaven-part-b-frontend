@@ -11,7 +11,6 @@ import Recommendations from './pages/Recommendations.jsx';
 import Search from './pages/Search.jsx';
 
 
-
 function App() {
 
   return (
