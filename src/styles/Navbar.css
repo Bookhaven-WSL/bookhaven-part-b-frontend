@@ -41,32 +41,37 @@ nav {
     color: white;
 }
 
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-    position: relative;
-    margin-right: auto;
-    background-color: #330F0A;
-}
 
-.menu-bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-    margin: 4px 0;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.menu-toggle:hover .menu-bar {
-    background-color: #fc5305;
-}
 
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: 2px;
+        border-radius: 4px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+        position: relative;
+        margin-right: auto;
+        background-color: #330F0A;
+    }
+    
+    .menu-bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+        margin: 4px 0;
+        transition: background-color 0.3s ease-in-out;
+    }
+    
+    .menu-toggle:hover .menu-bar {
+        background-color: #fc5305;
+    }
+
     .navbar-links {
         display: none;
         flex-direction: column;
