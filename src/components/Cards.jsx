@@ -16,28 +16,21 @@ const Cards = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
-                        <button 
-                            onClick={() => { 
+                        <button onClick={() => { 
                                 if (bookArray[0]?.olid) {
                                     addBookRead(bookArray[0].olid);
                                 } else {
                                     console.error('Invalid OLID');
                                 }
-                            }}
-                        >
-                            Read
-                        </button>
-                        <button 
-                            onClick={() => { 
+                            }}>Read</button>
+                            
+                        <button onClick={() => { 
                                 if (bookArray[0]?.olid) {
                                     addBookToBeRead(bookArray[0].olid);
                                 } else {
                                     console.error('Invalid OLID');
                                 }
-                            }}
-                        >
-                            Want To Read
-                        </button>
+                            }}>Want To Read</button>
                     </div>   
                 );
             })}
