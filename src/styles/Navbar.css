@@ -16,9 +16,9 @@ nav {
 
 .navbar-header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    gap: 20px;
+    flex-grow: 1;
 }
 
 .navbar-links {
@@ -47,8 +47,9 @@ nav {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 2000;
-    position: absolute;
+    z-index: 1001;
+    position: relative;
+    margin-right: auto;
     background-color: #330F0A;
 }
 
