@@ -27,8 +27,18 @@ const Cards = ({ books, className }) => {
                         >
                             Read
                         </button>
-                        <button>Want to read</button>
-                    </div>
+                        <button 
+                            onClick={() => { 
+                                if (bookArray[0]?.olid) {
+                                    addBookRead(bookArray[0].olid);
+                                } else {
+                                    console.error('Invalid OLID');
+                                }
+                            }}
+                        >
+                            Want To Read
+                        </button>
+                    </div>   
                 );
             })}
         </div>
