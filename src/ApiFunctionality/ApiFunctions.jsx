@@ -249,8 +249,6 @@ export async function deleteBook(title) {
             console.error('JWT token not found, please log in')
         }
 
-        console.log(title)
-        console.log(token)
         const response = await axios.delete(`${URL}/book/delete`, {
             headers: {
                 'jwt': token

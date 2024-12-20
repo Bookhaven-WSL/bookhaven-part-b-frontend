@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { deleteBook } from "../ApiFunctionality/ApiFunctions";
+import { deleteBook, updateBook } from "../ApiFunctionality/ApiFunctions";
 import "../styles/Cards.css";
 
 const CardsRead = ({ books, className }) => {
     if (!books || books.length === 0) {
         return <div className={className}>No books found.</div>;
     }
+    const [rating, setRating] = useState([])
 
     const [updatedBooks, setupdatedBooks] = useState([])
 
@@ -25,6 +26,7 @@ const CardsRead = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
+                        <h1> Rating: {rating}</h1>
                         <button 
                             className="remove-button"
                             onClick={() => { 
@@ -37,7 +39,12 @@ const CardsRead = ({ books, className }) => {
                                 }
                             }}
                         >Remove</button>
-                        <select name="rating" id="ratingSelection">
+                        <select onChange={(event) => {
+                            const ratingValue = event.target.value;
+                            setRating(ratingValue);
+                            updateBook(bookArray.title, "read", ratingValue);
+                        }}
+                            name="rating" id="ratingSelection">
                             <option value="0">N/A</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -45,9 +52,6 @@ const CardsRead = ({ books, className }) => {
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <button
-                            className="update-button"
-                        >Update Rating</button>
                     </div>
                     
                 );
@@ -57,3 +61,13 @@ const CardsRead = ({ books, className }) => {
 };
 
 export default CardsRead;
+
+// <button className="update-button"  
+                        //     onClick={() => {
+                        //         if (bookArray?.olid) {
+                        //             updateBook(bookArray.title, "read", rating)
+                        //         } else {
+                        //             console.error('Invalid OLID')
+                        //         }
+                        //     }}
+                        // >Update Rating</button>
