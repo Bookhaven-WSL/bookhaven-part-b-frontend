@@ -9,7 +9,7 @@ export default function Recommendations(props) {
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState(false);
     const [loading, setLoading] = useState(false);
-
+    const URL = "https://bookhaven-part-b-backend.onrender.com"
     const findBooksRecommended = async () => {
         const jwtToken = localStorage.getItem('token');
 
@@ -22,7 +22,7 @@ export default function Recommendations(props) {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8080/book/recommended-new', {genre: genre}, {
+            const response = await axios.post(`${URL}/book/recommended-new`, {genre: genre}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`,
                 },

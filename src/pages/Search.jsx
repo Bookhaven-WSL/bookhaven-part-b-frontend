@@ -7,7 +7,7 @@ export default function Search(props) {
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState(false);
     const [loading, setLoading] = useState(false);
-
+    const URL = "https://bookhaven-part-b-backend.onrender.com"
     const findBooks = async () => {
 
         const jwtToken = localStorage.getItem('token');
@@ -21,7 +21,7 @@ export default function Search(props) {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8080/book/search-new', {title: title}, {
+            const response = await axios.post(`${URL}/book/search-new`, {title: title}, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`,
                 },
