@@ -50,6 +50,9 @@ export default function Navbar() {
                     </NavLink>
                 </li>
             </ul>
+            
+            <NavLink className="logout" to="/" style={({isActive}) => isActive ? activeNavStyle : undefined} onClick={toggleMenu}>X</NavLink>
+               
         </nav>
     );
 }

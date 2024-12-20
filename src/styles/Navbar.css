@@ -23,11 +23,11 @@ nav {
 
 .navbar-links {
     display: flex;
+    justify-content: center;
     gap: 15px;
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: center;
     width: 100%;
 }
 
@@ -41,7 +41,19 @@ nav {
     color: white;
 }
 
+.logout {
+    margin-left: auto;
+    padding: 0;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
 
+.logout:hover {
+    color: white;
+}
 
 @media (max-width: 768px) {
     .menu-toggle {
@@ -95,4 +107,10 @@ nav {
         position: absolute;
         z-index: 2000;
     }
+
+    /* .logout {
+        margin-left: 0;
+        margin-top: 15px;
+        align-self: center;
+    } */
 }
