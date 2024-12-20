@@ -214,14 +214,24 @@ export async function getBookRecommended() {
    
 
 export async function updateBook(bookDetails) {
+    try {
+        console.log("Adding book to Read shelf")
+        const token = localStorage.getItem('token')
+        if (!token) {
+            console.error('JWT token not found, please log in');
+            return;
+        }
+        console.log(bookDetails)
+        const response = await axios.patch(`${URL}/book/update`, bookDetails, {
+            headers: {
+                'jwt': token,
+            }
+        });
 
-    const response = await axios.patch(`${URL}/book/update`, bookDetails)
-
-    if (response.status === 200) {
+        console.log("Book updated to read shelf")
         return response.data
-    }
-    else {
-        return
+    } catch (error) {
+        throw error;
     }
 }
 
