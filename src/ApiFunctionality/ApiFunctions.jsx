@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const URL = "https://bookhaven-part-b-backend.onrender.com/"
+const URL = "https://bookhaven-part-b-backend.onrender.com"
 
 //AUTHENTICATION
 
