@@ -3,27 +3,70 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 10px;
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
 }
 
 .card {
-    flex: 0 1 200px;
+    flex: 1 1 200px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     box-sizing: border-box;
-    background-color: gray;
+    background-color: #0D3B66;
     border: 1px solid #cccccc;
     padding: 20px;
-    height: 300px;
+    height: auto;
+    max-width: 200px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.read-button, .tbr-button, .remove-button, .move-button, .update-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #ff9505;
+    color: #330F0A;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Baumans";
+    transition: background-color 0.3s ease-in-out;
+}
+
+.read-button:hover {
+    background-color: #ec4e20;
+    color: white;
+}
+
+.tbr-button:hover {
+    background-color: #ec4e20;
+    color: white;
+}
+
 @media (max-width: 500px) {
     .card {
         flex: 0 1 100%;
+        max-width: 100%;
     }
 }
+
+
+/* #ratingSelection {
+    color: #ff9505;
+} */
