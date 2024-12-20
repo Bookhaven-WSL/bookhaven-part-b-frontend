@@ -187,7 +187,7 @@ export async function getBookRead() {
 export async function getBookToBeRead() {
     try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.get(`${URL}/to-be-read`, {
+        const response = await axios.get(`${URL}/book/to-be-read`, {
         headers: {
             'jwt': token,
         },
