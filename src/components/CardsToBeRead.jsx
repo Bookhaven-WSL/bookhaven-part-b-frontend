@@ -47,6 +47,7 @@ const CardsToBeRead = ({ books, className }) => {
                                 className="remove-button"
                                 onClick={() => { 
                                     if (bookArray?.olid) {
+                                        console.log(bookArray.title)
                                         deleteBook(bookArray.title);
                                     } else {
                                         console.error('Invalid OLID');
