@@ -173,7 +173,7 @@ export async function findBookRecommended() {
 export async function getBookRead() {
     try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.get('http://localhost:8080/book/read', {
+        const response = await axios.get(`${URL}/book/read`, {
         headers: {
             'jwt': token,
         },
@@ -187,7 +187,7 @@ export async function getBookRead() {
 export async function getBookToBeRead() {
     try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.get('http://localhost:8080/book/to-be-read', {
+        const response = await axios.get(`${URL}/to-be-read`, {
         headers: {
             'jwt': token,
         },
@@ -201,7 +201,7 @@ export async function getBookRecommended() {
 
     try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.get('http://localhost:8080/book/recommended', {
+        const response = await axios.get(`${URL}/book/recommended`, {
         headers: {
             'jwt': token,
         },
