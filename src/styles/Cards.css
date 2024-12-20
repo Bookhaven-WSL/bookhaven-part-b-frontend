@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: gray;
+    background-color: #0D3B66;
     border: 1px solid #cccccc;
     padding: 20px;
     height: auto;
@@ -38,22 +38,25 @@
     margin: 10px;
 }
 
-.read-button, .tbr-button {
+.read-button, .tbr-button, .remove-button, .move-button, .update-button {
     padding: 10px 15px;
     border: none;
-    background-color: #0D3B66;
-    color: white;
+    background-color: #ff9505;
+    color: #330F0A;
     border-radius: 4px;
     cursor: pointer;
+    font-family: "Baumans";
     transition: background-color 0.3s ease-in-out;
 }
 
 .read-button:hover {
-    background-color: #ff9505;
+    background-color: #ec4e20;
+    color: white;
 }
 
 .tbr-button:hover {
-    background-color: #ff9505;
+    background-color: #ec4e20;
+    color: white;
 }
 
 @media (max-width: 500px) {
@@ -62,3 +65,8 @@
         max-width: 100%;
     }
 }
+
+
+/* #ratingSelection {
+    color: #ff9505;
+} */
