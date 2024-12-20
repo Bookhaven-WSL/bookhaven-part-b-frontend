@@ -47,7 +47,7 @@ export default function Recommendations(props) {
     return (
         <>
             <h1>Recommended</h1>
-            <label htmlFor="bookGenre">Genre: </label>
+            <label htmlFor="bookGenre">Topic: </label>
             <input
                 type="text"
                 id="bookGenre"
