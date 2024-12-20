@@ -22,7 +22,7 @@ const CardsToBeRead = ({ books, className }) => {
     
 
     return (
-        <div className={className}>
+        <div className="cards-container">
 
             {books.map((bookArray, index) => {
                 return (
