@@ -60,7 +60,6 @@ export default function LoginSignupPage(props) {
             if (result && result.jwt) {
                 localStorage.setItem("token", result.jwt);
                 setJwt(result.jwt)
-                setUsername(result.user.username)
                 console.log(result)
             } else {
                 console.log("Failed Login, jwt token not found")

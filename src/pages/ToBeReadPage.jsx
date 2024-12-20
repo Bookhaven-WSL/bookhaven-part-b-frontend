@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { addBookRead, getBookRead, getBookToBeRead } from '../ApiFunctionality/ApiFunctions';
 import CardsRead from '../components/CardsRead';
 import { useAuth } from '../contexts/authProvider';
+import CardsToBeRead from '../components/CardsToBeRead';
 
 export default function ToBeReadPage(props) {
         const [books, setBooks] = useState([]);
@@ -43,7 +44,7 @@ export default function ToBeReadPage(props) {
             {loading ? (
                 <p>Loading books...</p>
             ) : result.length > 0 ? (
-                <CardsRead classname="Cards" books={result} />
+                <CardsToBeRead classname="Cards" books={result} />
             ) : (
                 <p>No books in this bookshelf</p>
             )}
