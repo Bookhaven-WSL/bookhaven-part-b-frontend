@@ -9,8 +9,7 @@ export default function ToBeReadPage(props) {
         const [error, setError] = useState(null);
         const { token, setToken } = useAuth();
         const [loading, setLoading] = useState(true)
-    
-    
+        
         const getBooks = async () => {
             
             const jwtToken = localStorage.getItem('token');

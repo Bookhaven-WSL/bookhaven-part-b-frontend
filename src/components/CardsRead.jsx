@@ -1,9 +1,17 @@
+import { useState } from "react";
 import { deleteBook } from "../ApiFunctionality/ApiFunctions";
 import "../styles/Cards.css";
 
 const CardsRead = ({ books, className }) => {
     if (!books || books.length === 0) {
         return <div className={className}>No books found.</div>;
+    }
+
+    const [updatedBooks, setupdatedBooks] = useState([])
+
+    const handlePageRender = (index) => {
+        const newBooks = books.splice(index, 1);
+        setupdatedBooks(newBooks);
     }
 
     return (
@@ -23,6 +31,7 @@ const CardsRead = ({ books, className }) => {
                                 if (bookArray?.olid) {
                                     console.log(bookArray.title)
                                     deleteBook(bookArray.title);
+                                    handlePageRender(index)
                                 } else {
                                     console.error('Invalid OLID');
                                 }

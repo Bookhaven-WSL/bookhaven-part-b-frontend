@@ -6,12 +6,16 @@ const CardsToBeRead = ({ books, className }) => {
     if (!books || books.length === 0) {
         return <div className={className}>No books found.</div>;
     }
-
-    
+    const [updatedBooks, setupdatedBooks] = useState([])
 
     const [buttonText, setbuttonText] = useState(
         books.map(() => ({text: "Read", disabled: false}))
     );
+
+    const handlePageRender = (index) => {
+        const newBooks = books.splice(index, 1);
+        setupdatedBooks(newBooks);
+    }
 
     const handleReadButton = (index) => {
         const updatedStates = [...buttonText];
@@ -19,8 +23,6 @@ const CardsToBeRead = ({ books, className }) => {
         setbuttonText(updatedStates);
     }
         
-    
-
     return (
         <div className={className}>
 
@@ -48,7 +50,8 @@ const CardsToBeRead = ({ books, className }) => {
                                 onClick={() => { 
                                     if (bookArray?.olid) {
                                         console.log(bookArray.title)
-                                        deleteBook(bookArray.title);
+                                        deleteBook(bookArray.title)
+                                        handlePageRender(index)
                                     } else {
                                         console.error('Invalid OLID');
                                     }
