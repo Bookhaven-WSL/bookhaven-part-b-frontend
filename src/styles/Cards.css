@@ -1,6 +1,7 @@
 .cards-container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-evenly;
     padding: 10px;
     gap: 20px;

@@ -95,9 +95,4 @@ nav {
         position: absolute;
         z-index: 2000;
     }
-
-    .navbar {
-        flex-wrap: wrap;
-        padding: 10px;
-    }
 }
