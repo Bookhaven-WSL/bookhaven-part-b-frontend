@@ -250,17 +250,18 @@ export async function deleteBook(title) {
         }
 
         console.log(title)
-
+        console.log(token)
         const response = await axios.delete(`${URL}/book/delete`, title, {
             headers: {
                 'jwt': token,
             }
         });
+        
         console.log("Book deleted")
         return response.data
 
     } catch (error) {
-        throw error;
+        console.error(('Request failed:', error.response?.data || error.message))
     }
 }
    
