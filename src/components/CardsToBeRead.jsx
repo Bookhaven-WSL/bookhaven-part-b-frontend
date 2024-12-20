@@ -32,8 +32,9 @@ const CardsToBeRead = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
-                        <button onClick={() => { 
-                    
+                        <button 
+                            className="move-button"
+                            onClick={() => { 
                                     if (bookArray?.olid) {
                                         updateBook(bookArray.title, "read", bookArray.rating); handleReadButton(index);
                                     } else {
@@ -42,7 +43,9 @@ const CardsToBeRead = ({ books, className }) => {
                                 }}
                                 disabled={buttonText[index].disabled}
                             >{buttonText[index].text}</button>
-                            <button onClick={() => { 
+                            <button 
+                                className="remove-button"
+                                onClick={() => { 
                                     if (bookArray?.olid) {
                                         deleteBook(bookArray.title);
                                     } else {

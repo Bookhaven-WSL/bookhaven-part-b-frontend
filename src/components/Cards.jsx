@@ -16,7 +16,9 @@ const Cards = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
-                        <button onClick={() => { 
+                        <button 
+                            className="read-button"
+                            onClick={() => { 
                                 if (bookArray[0]?.olid) {
                                     addBookRead(bookArray[0].olid);
                                 } else {
@@ -24,7 +26,9 @@ const Cards = ({ books, className }) => {
                                 }
                             }}>Read</button>
                             
-                        <button onClick={() => { 
+                        <button 
+                            className="tbr-button"
+                            onClick={() => { 
                                 if (bookArray[0]?.olid) {
                                     addBookToBeRead(bookArray[0].olid);
                                 } else {
