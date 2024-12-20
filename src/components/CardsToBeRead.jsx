@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/Cards.css";
-import { addBookRead, updateBook } from "../ApiFunctionality/ApiFunctions";
+import { addBookRead, deleteBook, updateBook } from "../ApiFunctionality/ApiFunctions";
 
 const CardsToBeRead = ({ books, className }) => {
     if (!books || books.length === 0) {
@@ -33,14 +33,23 @@ const CardsToBeRead = ({ books, className }) => {
                             className="card-book-img"
                         />
                         <button onClick={() => { 
+                    
                                     if (bookArray?.olid) {
-                                        updateBook(bookArray?.title); handleReadButton(index);
+                                        updateBook(bookArray.title, "read", bookArray.rating); handleReadButton(index);
                                     } else {
                                         console.error('Invalid OLID');
                                     }
                                 }}
                                 disabled={buttonText[index].disabled}
                             >{buttonText[index].text}</button>
+                            <button onClick={() => { 
+                                    if (bookArray?.olid) {
+                                        deleteBook(bookArray.title);
+                                    } else {
+                                        console.error('Invalid OLID');
+                                    }
+                                }}
+                            >Remove</button>
                     </div>
                 )
             })}

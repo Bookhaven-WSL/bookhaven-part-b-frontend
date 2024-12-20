@@ -213,13 +213,19 @@ export async function getBookRecommended() {
 };
    
 
-export async function updateBook(bookDetails) {
+export async function updateBook(title, shelf, rating) {
     try {
         console.log("Adding book to Read shelf")
         const token = localStorage.getItem('token')
         if (!token) {
             console.error('JWT token not found, please log in');
             return;
+        }
+        console.log(title, shelf, rating)
+        let bookDetails = {
+            title: title,
+            shelf: shelf,
+            rating: rating
         }
         console.log(bookDetails)
         const response = await axios.patch(`${URL}/book/update`, bookDetails, {
@@ -235,14 +241,26 @@ export async function updateBook(bookDetails) {
     }
 }
 
-export async function deleteBook(bookDetails) {
+export async function deleteBook(title) {
+    try {
+        console.log("About to delete book")
+        const token = localStorage.getItem('token')
+        if (!token) {
+            console.error('JWT token not found, please log in')
+        }
 
-    const response = await axios.delete(`${URL}/book/delete`, bookDetails)
+        console.log(title)
 
-    if (response.status === 200) {
+        const response = await axios.delete(`${URL}/book/delete`, title, {
+            headers: {
+                'jwt': token,
+            }
+        });
+        console.log("Book deleted")
         return response.data
-    }
-    else {
-        return
+
+    } catch (error) {
+        throw error;
     }
 }
+   

@@ -16,7 +16,18 @@ const CardsRead = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
+                        <button>Remove</button>
+                        <select name="rating" id="ratingSelection">
+                            <option value="0">N/A</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button>Update Rating</button>
                     </div>
+                    
                 );
             })}
         </div>
