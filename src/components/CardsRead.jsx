@@ -1,3 +1,4 @@
+import { deleteBook } from "../ApiFunctionality/ApiFunctions";
 import "../styles/Cards.css";
 
 const CardsRead = ({ books, className }) => {
@@ -16,8 +17,16 @@ const CardsRead = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
-                        <button
+                        <button 
                             className="remove-button"
+                            onClick={() => { 
+                                if (bookArray?.olid) {
+                                    console.log(bookArray.title)
+                                    deleteBook(bookArray.title);
+                                } else {
+                                    console.error('Invalid OLID');
+                                }
+                            }}
                         >Remove</button>
                         <select name="rating" id="ratingSelection">
                             <option value="0">N/A</option>
