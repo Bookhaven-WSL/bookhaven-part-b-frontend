@@ -2,11 +2,19 @@ import { useState } from "react";
 import { deleteBook, updateBook } from "../ApiFunctionality/ApiFunctions";
 import "../styles/Cards.css";
 
-const CardsRead = ({ books, className }) => {
+const CardsRead = ({ books, className}) => {
     if (!books || books.length === 0) {
         return <div className={className}>No books found.</div>;
     }
-    const [rating, setRating] = useState([])
+    
+    const [ratingBooks, setratingBooks] = useState(books)
+
+    const handleRating = (index, ratingValue) => {
+        const newBooks = ratingBooks.map((book, i) =>
+            i === index ? {...book, rating: ratingValue} : book);
+        setratingBooks(newBooks);
+    };
+
 
     const [updatedBooks, setupdatedBooks] = useState([])
 
@@ -16,9 +24,9 @@ const CardsRead = ({ books, className }) => {
     }
 
     return (
-        <div className={className}>
+        <div className="cards-container">
 
-            {books.map((bookArray, index) => {
+            {ratingBooks.map((bookArray, index) => {
                 return (
                     <div key={index} className="card">
                         <img
@@ -26,7 +34,7 @@ const CardsRead = ({ books, className }) => {
                             alt={`Book Cover ${index + 1}`}
                             className="card-book-img"
                         />
-                        <h1> Rating: {rating}</h1>
+                        <h1> Rating: {bookArray.rating || "N/A"}</h1>
                         <button 
                             className="remove-button"
                             onClick={() => { 
@@ -41,10 +49,13 @@ const CardsRead = ({ books, className }) => {
                         >Remove</button>
                         <select onChange={(event) => {
                             const ratingValue = event.target.value;
-                            setRating(ratingValue);
-                            updateBook(bookArray.title, "read", ratingValue);
+                            handleRating(index, ratingValue);
+                            updateBook(bookArray.title, "read", ratingValue)
                         }}
-                            name="rating" id="ratingSelection">
+                            name="rating" 
+                            id="ratingSelection"
+                            value={bookArray.rating || "0"}
+                            >
                             <option value="0">N/A</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
