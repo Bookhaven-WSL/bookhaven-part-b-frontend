@@ -15,7 +15,7 @@ const CardsToBeRead = ({ books, className }) => {
 
     const handleReadButton = (index) => {
         const updatedStates = [...buttonText];
-        updatedStates[index] = { text: "Added", disabled: true};
+        updatedStates[index] = { text: "Done", disabled: true};
         setbuttonText(updatedStates);
     }
         
