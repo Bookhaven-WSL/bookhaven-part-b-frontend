@@ -27,9 +27,6 @@ const CardsRead = ({ books, className }) => {
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <button
-                            className="update-button"
-                        >Update Rating</button>
                     </div>
                     
                 );
